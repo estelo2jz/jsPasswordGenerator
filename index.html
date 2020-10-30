@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/style.css" />
+  <title>Random PW Generator</title>
+</head>
+<body>
+  <div class="inputBox">
+    <h2>Random Password Generator with copy button</h2>
+    <input type="text" name="" placeholder="Create Password" id="password" readonly="" />
+    <img src="/images/copy.png" class="copy" onclick="copyPassword();" />
+    <div id="btn" onclick="getPassword();">Generator Password</div>
+  </div>
+  <div class="alertBox"></div>
+  <script type="text/javascript">
+    var alertBox = document.querySelector('.alertBox');
+
+    function getPassword() {
+      var chars = 'o123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+?><:{}[]';
+      var passwordLenght = 16;
+      var password = "";
+
+      for (var i = 0; i < passwordLenght; i++) {
+        var randomNumber = Math.floor(Math.random() * chars.length);
+        password += chars.substring(randomNumber, randomNumber + 1);
+      }
+      document.getElementById("password").value = password;
+      alertBox.innerHTML = "New Password Copied : <br />" + password;
+    }
+    function copyPassword() {
+      var copyPassText = document.getElementById("password");
+      copyPassText.select();
+      copyPassText.setSelectionRange(0, 9999);
+      document.execCommand("copy");
+      alertBox.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>

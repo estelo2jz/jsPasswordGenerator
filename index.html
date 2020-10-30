@@ -35,6 +35,9 @@
       copyPassText.setSelectionRange(0, 9999);
       document.execCommand("copy");
       alertBox.classList.toggle('active');
+      setTimeout(function() {
+        alertBox.classList.toggle('active');
+      }, 2000)
     }
   </script>
 </body>
